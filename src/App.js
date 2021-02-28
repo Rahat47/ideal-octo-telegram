@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import Country from './component/Country/Country';
 import Statistic from './component/Statistics/Statistic';
 
+
 function App() {
   const [countries, setCountries] = useState([])
-  let [selectedCountry, setSelectedCountry] = useState([])
+  const [selectedCountry, setSelectedCountry] = useState([])
 
   function handleSelectCountry(country) {
-    selectedCountry = [...selectedCountry, country]
-
+    const newSelected = [...selectedCountry, country]
+    setSelectedCountry(newSelected)
   }
 
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Statistic selectedCountry={selectedCountry}></Statistic>
 
       {countries.map(country => <Country key={country.numericCode} country={country} selectCountry={handleSelectCountry} />)}

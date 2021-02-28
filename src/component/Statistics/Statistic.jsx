@@ -3,6 +3,10 @@ import { Card, Container } from "semantic-ui-react";
 import "./Style.css";
 
 const Statistic = ({ selectedCountry }) => {
+    let totalpopulation = 0;
+    selectedCountry.forEach(country => {
+        totalpopulation = totalpopulation + country.population;
+    });
     return (
         <div>
             <Container>
@@ -11,14 +15,10 @@ const Statistic = ({ selectedCountry }) => {
                         <Card.Header>
                             Country Selected: {selectedCountry.length}
                         </Card.Header>
-                        <Card.Meta>
-                            <span className="date">Joined in 2015</span>
-                        </Card.Meta>
                         <Card.Description>
-                            Matthew is a musician living in Nashville.
+                            Total Population: {totalpopulation}
                         </Card.Description>
                     </Card.Content>
-                    <Card.Content extra></Card.Content>
                 </Card>
             </Container>
         </div>
